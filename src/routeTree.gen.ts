@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AnimalsRouteImport } from './routes/animals'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as GetInvolvedRouteImport } from './routes/get-involved'
+import { Route as VisitRouteImport } from './routes/visit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnimalsRoute = AnimalsRouteImport.update({
+  id: '/animals',
+  path: '/animals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetInvolvedRoute = GetInvolvedRouteImport.update({
+  id: '/get-involved',
+  path: '/get-involved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitRoute = VisitRouteImport.update({
+  id: '/visit',
+  path: '/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/get-involved': typeof GetInvolvedRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/get-involved': typeof GetInvolvedRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/animals': typeof AnimalsRoute
+  '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/get-involved': typeof GetInvolvedRoute
+  '/visit': typeof VisitRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/events'
+    | '/get-involved'
+    | '/visit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/events'
+    | '/get-involved'
+    | '/visit'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/animals'
+    | '/contact'
+    | '/events'
+    | '/get-involved'
+    | '/visit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AnimalsRoute: typeof AnimalsRoute
+  ContactRoute: typeof ContactRoute
+  EventsRoute: typeof EventsRoute
+  GetInvolvedRoute: typeof GetInvolvedRoute
+  VisitRoute: typeof VisitRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/animals': {
+      id: '/animals'
+      path: '/animals'
+      fullPath: '/animals'
+      preLoaderRoute: typeof AnimalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-involved': {
+      id: '/get-involved'
+      path: '/get-involved'
+      fullPath: '/get-involved'
+      preLoaderRoute: typeof GetInvolvedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit': {
+      id: '/visit'
+      path: '/visit'
+      fullPath: '/visit'
+      preLoaderRoute: typeof VisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AnimalsRoute: AnimalsRoute,
+  ContactRoute: ContactRoute,
+  EventsRoute: EventsRoute,
+  GetInvolvedRoute: GetInvolvedRoute,
+  VisitRoute: VisitRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
